@@ -4,13 +4,28 @@
         <title>Journal Home</title>
     </head>
     <body>
+        <h2>Journal</h2>
         <form action="/" method="post">
-            <label>Date</label>
-            <input type="date" name="date">
-            <label>Text</label>
-            <textarea name="text">
-            <button type="submit">
+            <div>
+                <label>Date</label><br>
+                <input type="date" name="date" required/>
+            </div>
+            <div>
+                <label>Entry</label><br>
+                <textarea name="entry" required></textarea>
+            </div>
+            <input type="submit">
         </form>
-                
+        <div>
+            <h4>Recent entries</h4>
+            {% if rec_ent|length == 0 %}
+            <div>None</div>
+            {% endif %}
+            <ul>
+            {% for re in rec_ent %}
+            <li>{{ re[2] }}</li>
+            {% endfor %}
+            </ul>
+        </div>
     </body>
 </html>
